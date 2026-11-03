@@ -1,9 +1,23 @@
 [
     {
-        "amount_pln": 2500,
+        "amount_pln": 1500,
         "date": "2025-02-04",
         "settlement_year": 2025,
         "settlement_month": 2,
         "tenant": "tenant-1"
+    },
+    {
+        "amount_pln": 1200.0,
+        "date": "2025-02-06",
+        "settlement_year": 2025,
+        "settlement_month": 2,
+        "tenant": "tenant-2"
+    },
+    {
+        "amount_pln": 1100.0,
+        "date": "2025-02-07",
+        "settlement_year": 2025,
+        "settlement_month": 2,
+        "tenant": "tenant-3"
     }
 ]
