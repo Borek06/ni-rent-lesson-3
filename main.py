@@ -115,21 +115,29 @@ if __name__ == '__main__':
     print("RAPORT ROZLICZENIOWY")
     print("\n--- MIESZKANIA I POKOJE ---")
     for apartment in manager.apartments.values():
-        print(f"\nMieszkanie: {apartment.name} ({apartment.location}) | Powierzchnia: {apartment.area_m2} m2")
+        print(f"\n========== MIESZKANIE: {apartment.name} ==========")
+        print(f"Adres: {apartment.location}")
+        print(f"Powierzchnia: {apartment.area_m2} m²")
         print("Pokoje:")
+
         for room in apartment.rooms.values():
-            print(f"  * {room.name}: {room.area_m2} m2")
-        
-        print("Rachunki przypisane do mieszkania:")
+            print(f"  - {room.name}: {room.area_m2} m²")
+
         for bill in manager.bills:
             if bill.apartment == apartment.key:
                 print(f"  - [{bill.type}] {bill.amount_pln} PLN (termin: {bill.date_due}, okres: {bill.settlement_month}/{bill.settlement_year})")
 
     print("\n--- NAJEMCY I WPŁATY ---")
     for tenant in manager.tenants.values():
-        print(f"\nNajemca: {tenant.name} | Pokój: {tenant.room} | Czynsz: {tenant.rent_pln} PLN | Kaucja: {tenant.deposit_pln} PLN")
-        print(f"Umowa: {tenant.date_agreement_from} do {tenant.date_agreement_to}")
-        print("Zarejestrowane przelewy:")
+        print(f"\n========== NAJEMCA: {tenant.name} ==========")
+        print(f"Mieszkanie: {tenant.apartment}")
+        print(f"Pokój: {tenant.room}")
+        print(f"Czynsz: {tenant.rent_pln} zł")
+        print(f"Kaucja: {tenant.deposit_pln} zł")
+        print(f"Umowa: {tenant.date_agreement_from} – {tenant.date_agreement_to}")
+
+        print("Przelewy:")
         for transfer in manager.transfers:
             if transfer.tenant == tenant.name:
-                print(f"  -> Kwota: {transfer.amount_pln} PLN | Data: {transfer.date} (za: {transfer.settlement_month}/{transfer.settlement_year})")
+                print(f"  - {transfer.amount_pln} zł | Data: {transfer.date} | "
+                      f"Za okres: {transfer.settlement_month}/{transfer.settlement_year}")
