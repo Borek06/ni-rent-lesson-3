@@ -112,6 +112,8 @@ if __name__ == '__main__':
     parameters = Parameters()
     manager = Manager(parameters)
 
+    print("RAPORT ROZLICZENIOWY")
+    print("\n--- MIESZKANIA I POKOJE ---")
     for apartment in manager.apartments.values():
         print(f"\n========== MIESZKANIE: {apartment.name} ==========")
         print(f"Adres: {apartment.location}")
@@ -123,8 +125,9 @@ if __name__ == '__main__':
 
         for bill in manager.bills:
             if bill.apartment == apartment.key:
-                print('  ', bill.amount_pln, bill.date_due, bill.settlement_year, bill.settlement_month, bill.type)
+                print(f"  - [{bill.type}] {bill.amount_pln} PLN (termin: {bill.date_due}, okres: {bill.settlement_month}/{bill.settlement_year})")
 
+    print("\n--- NAJEMCY I WPŁATY ---")
     for tenant in manager.tenants.values():
         print(f"\n========== NAJEMCA: {tenant.name} ==========")
         print(f"Mieszkanie: {tenant.apartment}")
